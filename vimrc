@@ -68,6 +68,7 @@ set termguicolors
 set hlsearch
 set incsearch
 nnoremap \\ :noh<return>
+set background=dark
 colorscheme gruvbox
 
 nnoremap <leader><tab> :NERDTreeToggle<enter>
