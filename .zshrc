@@ -64,8 +64,16 @@ HISTSIZE=1000
 SAVEHIST=1000
 # bindkey -v
 # End of lines configured by zsh-newuser-install
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+if [ -e ~/.zsh-vi-mode/zsh-vi-mode.plugin.zsh]; then
+    source ~/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
+else
+    source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+fi
+if [ -e ~/.powerlevel10k/powerlevel10k.zsh-theme ]; then
+    source ~/.powerlevel10k/powerlevel10k.zsh-theme
+else
+    source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
