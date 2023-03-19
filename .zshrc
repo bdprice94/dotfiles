@@ -55,6 +55,14 @@ function fzfh {
     find . | fzf
 }
 
+function venv_act {
+    if [[ -e .venv/bin/activate ]] ; then
+        source .venv/bin/activate ]]
+    else
+        echo "Could not find .venv/bin/activate"
+    fi
+}
+
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
@@ -76,6 +84,9 @@ if [[ -f "/usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme" ]]; then
 else
     source ~/.powerlevel10k/powerlevel10k.zsh-theme
 fi
+
+export NVM_DIR=~/.nvm
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
