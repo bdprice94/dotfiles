@@ -30,6 +30,7 @@ Plug 'morhetz/gruvbox'
 " On-demand loading
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 Plug 'puremourning/vimspector'
 call plug#end()
 " You can revert the settings after the call like so:
@@ -91,6 +92,10 @@ nnoremap <leader><tab> :NERDTreeToggle<enter>
 " EasyAlign
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
+
+" GitGutter
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
 
 " VimSpector
 let g:vimspector_enable_mappings = 'HUMAN'
