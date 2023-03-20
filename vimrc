@@ -48,7 +48,6 @@ set expandtab
 set shiftwidth=4
 
 set cursorcolumn
-filetype plugin on
 
 packadd! cfilter
 
@@ -58,22 +57,36 @@ set undodir=~/.vim/undo
 " second causes caps query to only match caps
 set ignorecase
 set smartcase
+set hlsearch
+set incsearch
+nnoremap \\ :noh<return>
 
 " lets mouse interact with vim from terminal
 set mouse=a
 
 set number
 
+filetype plugin on
 set termguicolors
-set hlsearch
-set incsearch
-nnoremap \\ :noh<return>
 set background=dark
 colorscheme gruvbox
+" Cursor in terminal
+" https://vim.fandom.com/wiki/Configuring_the_cursor
+" 1 or 0 -> blinking block
+" 2 solid block
+" 3 -> blinking underscore
+" 4 solid underscore
+" Recent versions of xterm (282 or above) also support
+" 5 -> blinking vertical bar
+" 6 -> solid vertical bar
+if &term =~ '^xterm'
+" normal mode
+let &t_EI .= "\<Esc>[0 q"
+" insert mode
+let &t_SI .= "\<Esc>[6 q"
+endif
 
 nnoremap <leader><tab> :NERDTreeToggle<enter>
-
-
 
 " EasyAlign
 nmap ga <Plug>(EasyAlign)
