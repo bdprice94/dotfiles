@@ -55,7 +55,7 @@ function fzfh {
     find . | fzf
 }
 
-function venv_act {
+function act_venv {
     if [[ -e .venv/bin/activate ]] ; then
         source .venv/bin/activate ]]
     else
