@@ -48,8 +48,7 @@ set tabstop=4
 set expandtab
 set shiftwidth=4
 
-set cursorcolumn
-
+set cursorline
 packadd! cfilter
 
 set undofile
