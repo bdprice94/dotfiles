@@ -19,6 +19,7 @@ else
     sudo apt-get -y install vim git gh nodejs zsh fzf bat python 
 fi
 mkdir ~/.vim
+mkdir ~/.vim/undo
 git clone https://github.com/bdprice94/dotfiles.git
 ln dotfiles/vimrc ~/.vim/vimrc
 ln dotfiles/.p10k.zsh ~/.p10k.zsh
