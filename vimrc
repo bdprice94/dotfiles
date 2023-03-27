@@ -86,7 +86,36 @@ let &t_EI .= "\<Esc>[0 q"
 let &t_SI .= "\<Esc>[6 q"
 endif
 
-nnoremap <leader><tab> :NERDTreeToggle<enter>
+" Provides text object editing backwards
+nnoremap cI" 2F"ci"
+nnoremap cA" 2F"ca"
+nnoremap cI' 2F'ci'
+nnoremap cA' 2F'ca'
+nnoremap cI` 2F`ci`
+nnoremap cA` 2F`ca`
+
+nnoremap cI{ :let old=@/<CR>?}<CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ci{
+nnoremap cI} :let old=@/<CR>?}<CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ci{
+nnoremap cA{ :let old=@/<CR>?}<CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ca{
+nnoremap cA} :let old=@/<CR>?}<CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ca{
+
+nnoremap cI( :let old=@/<CR>?)<CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ci(
+nnoremap cI) :let old=@/<CR>?)<CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ci(
+nnoremap cA( :let old=@/<CR>?)<CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ca(
+nnoremap cA) :let old=@/<CR>?)<CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ca(
+
+nnoremap cI[ :let old=@/<CR>?]<CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ci[
+nnoremap cI] :let old=@/<CR>?]<CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ci[
+nnoremap cA[ :let old=@/<CR>?]<CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ca[
+nnoremap cA] :let old=@/<CR>?]<CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ca[
+
+nnoremap cI< :let old=@/<CR>?><CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ci<
+nnoremap cI> :let old=@/<CR>?><CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ci<
+nnoremap cA< :let old=@/<CR>?><CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ca<
+nnoremap cA> :let old=@/<CR>?><CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ca<
+
+nnoremap <leader><tab> :NERDTreeToggle<CR>
+nnoremap <C-F> :FZF<CR>
 
 " EasyAlign
 nmap ga <Plug>(EasyAlign)
