@@ -13,7 +13,7 @@ else
 fi
 if [[ $OS == "Arch Linux" ]]; then
     sudo pacman -Syu --noconfirm
-    sudo pacman -S --noconfirm vim git github-cli zsh zsh-completions fzf bat nodejs python base-devel tmux
+    sudo pacman -S --noconfirm vim git github-cli zsh zsh-completions fzf ripgrep bat nodejs python base-devel tmux
 else
     sudo apt-get update
     sudo apt-get -y install vim git gh nodejs zsh fzf bat python 
