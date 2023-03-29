@@ -34,6 +34,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'puremourning/vimspector'
 
 Plug 'ziglang/zig.vim'
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 " You can revert the settings after the call like so:
 "   filetype indent off   " Disable file-type-specific indentation
@@ -117,7 +118,15 @@ nnoremap cA< :let old=@/<CR>?><CR>:noh<bar>call histdel('/', -1)<bar>let @/ = ol
 nnoremap cA> :let old=@/<CR>?><CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ca<
 
 nnoremap <leader><tab> :NERDTreeToggle<CR>
-nnoremap <C-F> :FZF<CR>
+" To get the below to work in future, reference: https://stackoverflow.com/a/2179779
+" For now, we can't  use the above because vim sees C-S-x as C-x. So, instead
+" we just have Windows Terminal send a similar unicode sequence and hope no
+" conflicts occur! 灛 = \u705b /shrug
+nnoremap 灛 :Rg<CR>
+nnoremap <C-f> :FZF<CR>
+
+" Ctrl-S to save, only doing because there's no other binding currently
+inoremap <C-s> <Esc>:w<CR>a
 
 " EasyAlign
 nmap ga <Plug>(EasyAlign)
