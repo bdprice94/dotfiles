@@ -10,10 +10,6 @@ call plug#begin()
 
 " Make sure you use single quotes
 
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'jiangmiao/auto-pairs'
@@ -21,20 +17,20 @@ Plug 'markonm/traces.vim'
 
 Plug 'vimwiki/vimwiki'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'dense-analysis/ale'
-
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sheerun/vim-polyglot'
 Plug 'jcorbin/darkula'
 Plug 'morhetz/gruvbox'
 
-" On-demand loading
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/ale'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'puremourning/vimspector'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 Plug 'ziglang/zig.vim'
 call plug#end()
