@@ -11,10 +11,13 @@ call plug#begin()
 " Make sure you use single quotes
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'jiangmiao/auto-pairs'
+Plug 'markonm/traces.vim'
 
 Plug 'vimwiki/vimwiki'
 
@@ -34,7 +37,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'puremourning/vimspector'
 
 Plug 'ziglang/zig.vim'
-Plug 'jiangmiao/auto-pairs'
 call plug#end()
 " You can revert the settings after the call like so:
 "   filetype indent off   " Disable file-type-specific indentation
