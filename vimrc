@@ -15,8 +15,6 @@ Plug 'junegunn/vim-easy-align'
 Plug 'jiangmiao/auto-pairs'
 Plug 'markonm/traces.vim'
 
-Plug 'vimwiki/vimwiki'
-
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sheerun/vim-polyglot'
@@ -32,6 +30,7 @@ Plug 'puremourning/vimspector'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
+Plug 'vimwiki/vimwiki'
 Plug 'ziglang/zig.vim'
 call plug#end()
 " You can revert the settings after the call like so:
@@ -115,24 +114,62 @@ nnoremap cI> :let old=@/<CR>?><CR>:noh<bar>call histdel('/', -1)<bar>let @/ = ol
 nnoremap cA< :let old=@/<CR>?><CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ca<
 nnoremap cA> :let old=@/<CR>?><CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ca<
 
+nnoremap ci< :let old=@/<CR>/><CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ci<
+nnoremap ci> :let old=@/<CR>/><CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ci<
+nnoremap ca< :let old=@/<CR>/><CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ca<
+nnoremap ca> :let old=@/<CR>/><CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ca<
+
+
 nnoremap <leader><tab> :NERDTreeToggle<CR>
 " To get the below to work in future, reference: https://stackoverflow.com/a/2179779
 " For now, we can't  use the above because vim sees C-S-x as C-x. So, instead
 " we just have Windows Terminal send a similar unicode sequence and hope no
 " conflicts occur! 灛 = \u705b /shrug
 nnoremap 灛 :Rg<CR>
-nnoremap <C-f> :FZF<CR>
+nnoremap <C-f> :Files<CR>
+inoremap 灛 <Esc>:Rg<CR>
+inoremap <C-f> <Esc>:Files<CR>
 
 " Ctrl-S to save, only doing because there's no other binding currently
 inoremap <C-s> <Esc>:w<CR>a
+
+" C/C++ specific settings
+" Using both ale and coc is slow on c++ files so disable ale
+augroup CLike
+    autocmd!
+    autocmd BufRead,BufNewFile *.h,*.cpp,*.c ALEDisable
+augroup END
+
+function! SaveSessionIfGit()
+    if isdirectory(getcwd() . '/.git')
+        execute 'mksession! ' getcwd() . '/.session.vim'
+    endif
+endfunction
+
+function! RestoreSess()
+if filereadable(getcwd() . '/.session.vim')
+    execute 'so ' . getcwd() . '/.session.vim'
+    if bufexists(1)
+        for l in range(1, bufnr('$'))
+            if bufwinnr(l) == -1
+                exec 'sbuffer ' . l
+            endif
+        endfor
+    endif
+endif
+endfunction
+
+" Session file
+au VimLeavePre * call SaveSessionIfGit()
+au VimEnter * nested call RestoreSess()
 
 " EasyAlign
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
 " GitGutter
-nmap ]h <Plug>(GitGutterNextHunk)
-nmap [h <Plug>(GitGutterPrevHunk)
+nmap ]g <Plug>(GitGutterNextHunk)
+nmap [g <Plug>(GitGutterPrevHunk)
 
 " VimSpector
 let g:vimspector_enable_mappings = 'HUMAN'
@@ -166,8 +203,8 @@ function! CheckBackSpace() abort
     return !col || getline('.')[col-1] =~# '\s'
 endfunction
 
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> [h <Plug>(coc-diagnostic-prev)
+nmap <silent> ]h <Plug>(coc-diagnostic-next)
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
