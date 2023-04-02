@@ -59,7 +59,7 @@ set ignorecase
 set smartcase
 set hlsearch
 set incsearch
-nnoremap \\ :noh<return>
+nnoremap <C-l> :noh<return><C-l>
 
 " lets mouse interact with vim from terminal
 set mouse=a
