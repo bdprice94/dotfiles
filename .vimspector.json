@@ -26,6 +26,16 @@
             }
         }
       }
+    },
+    "test": {
+        "adapter": "CodeLLDB",
+        "configuration": {
+            "Mimode": "",
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            "program": "{workspaceRoot}/Debug/bin/test",
+            "request": "launch"
+        }
     }
   }
 }

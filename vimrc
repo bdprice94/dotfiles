@@ -168,6 +168,7 @@ nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
 " GitGutter
+" Remember: <leader>hu/hs = hunk undo/hunk stage
 nmap ]g <Plug>(GitGutterNextHunk)
 nmap [g <Plug>(GitGutterPrevHunk)
 
