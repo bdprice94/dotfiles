@@ -25,6 +25,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-dispatch'
 Plug 'airblade/vim-gitgutter'
 Plug 'puremourning/vimspector'
 Plug 'junegunn/fzf'
@@ -126,9 +127,10 @@ nnoremap <leader><tab> :NERDTreeToggle<CR>
 " we just have Windows Terminal send a similar unicode sequence and hope no
 " conflicts occur! 灛 = \u705b /shrug
 nnoremap 灛 :Rg<CR>
-nnoremap <C-f> :Files<CR>
+nnoremap <C-f> :GFiles<CR>
 inoremap 灛 <Esc>:Rg<CR>
-inoremap <C-f> <Esc>:Files<CR>
+inoremap <C-f> <Esc>:GFiles<CR>
+nnoremap <C-t> :tabe<CR>
 
 " Ctrl-S to save, only doing because there's no other binding currently
 inoremap <C-s> <Esc>:w<CR>a
@@ -184,8 +186,16 @@ nmap <Leader><F11> <Plug>VimspectorUpFrame
 nmap <Leader><F12> <Plug>VimspectorDownFrame
 nmap <Leader>B     <Plug>VimspectorBreakpoints
 nmap <Leader>D     <Plug>VimspectorDisassemble
-" Stop debugging with F5
-nnoremap <Leader><F5>  <Plug>VimspectorReset
+
+nmap <Leader>drn   <Plug>VimspectorContinue
+nmap <Leader>dst   <Plug>VimspectorStop
+nmap <Leader>drt   <Plug>VimspectorRunToCursor
+nmap <Leader>dsi   <Plug>VimspectorStepInto
+nmap <Leader>dso   <Plug>VimspectorStepOut
+nmap <Leader>dss   <Plug>VimspectorStepOver
+
+nmap <Leader>dbn   <Plug>VimspectorToggleBreakpoint
+nmap <Leader>dbc   <Plug>VimspectorToggleConditionalBreakpoint
 
 " Suggested coc settings follow 
 set updatetime=300
