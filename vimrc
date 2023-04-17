@@ -22,7 +22,6 @@ Plug 'jcorbin/darkula'
 Plug 'morhetz/gruvbox'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'dense-analysis/ale'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch'
@@ -121,7 +120,8 @@ nnoremap ca< :let old=@/<CR>/><CR>:noh<bar>call histdel('/', -1)<bar>let @/ = ol
 nnoremap ca> :let old=@/<CR>/><CR>:noh<bar>call histdel('/', -1)<bar>let @/ = old<CR>ca<
 
 
-nnoremap <leader><tab> :NERDTreeToggle<CR>
+nnoremap <Leader><Tab> :NERDTreeToggle<CR>
+nnoremap <Leader>f  :NERDTreeFind<CR>
 " To get the below to work in future, reference: https://stackoverflow.com/a/2179779
 " For now, we can't  use the above because vim sees C-S-x as C-x. So, instead
 " we just have Windows Terminal send a similar unicode sequence and hope no
@@ -131,16 +131,14 @@ nnoremap <C-f> :GFiles<CR>
 inoremap 灛 <Esc>:Rg<CR>
 inoremap <C-f> <Esc>:GFiles<CR>
 nnoremap <C-t> :tabe<CR>
+" Once again, C-; is not mappable, so we do windows terminal stuff
+" 火 = \u706b
+imap 火 <ESC>A;<CR>
+" 灻 = \u707b
+imap 灻 <ESC>A;<CR>
 
 " Ctrl-S to save, only doing because there's no other binding currently
 inoremap <C-s> <Esc>:w<CR>a
-
-" C/C++ specific settings
-" Using both ale and coc is slow on c++ files so disable ale
-augroup CLike
-    autocmd!
-    autocmd BufRead,BufNewFile *.h,*.cpp,*.c ALEDisable
-augroup END
 
 function! SaveSessionIfGit()
     if isdirectory(getcwd() . '/.git')
@@ -170,7 +168,7 @@ nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
 " GitGutter
-" Remember: <leader>hu/hs = hunk undo/hunk stage
+" Remember: <Leader>hu/hs = hunk undo/hunk stage
 nmap ]g <Plug>(GitGutterNextHunk)
 nmap [g <Plug>(GitGutterPrevHunk)
 
@@ -236,11 +234,10 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming
-nmap <leader>rn <Plug>(coc-rename)
+nmap <Leader>rn <Plug>(coc-rename)
 
 " Formatting selected code
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <Leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -251,24 +248,24 @@ augroup mygroup
 augroup end
 
 " Applying code actions to the selected code block
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+" Example: `<Leader>aap` for current paragraph
+xmap <Leader>a  <Plug>(coc-codeaction-selected)
+nmap <Leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying code actions at the cursor position
-nmap <leader>ac  <Plug>(coc-codeaction-cursor)
+nmap <Leader>ac  <Plug>(coc-codeaction-cursor)
 " Remap keys for apply code actions affect whole buffer
-nmap <leader>as  <Plug>(coc-codeaction-source)
+nmap <Leader>as  <Plug>(coc-codeaction-source)
 " Apply the most preferred quickfix action to fix diagnostic on the current line
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <Leader>qf  <Plug>(coc-fix-current)
 
 " Remap keys for applying refactor code actions
-nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
-xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
-nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+nmap <silent> <Leader>re <Plug>(coc-codeaction-refactor)
+xmap <silent> <Leader>r  <Plug>(coc-codeaction-refactor-selected)
+nmap <silent> <Leader>r  <Plug>(coc-codeaction-refactor-selected)
 
 " Run the Code Lens action on the current line
-nmap <leader>cl  <Plug>(coc-codelens-action)
+nmap <Leader>cl  <Plug>(coc-codelens-action)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server
