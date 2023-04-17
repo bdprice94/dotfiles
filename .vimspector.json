@@ -16,12 +16,13 @@
       "configuration": {
         "request": "launch",
         "program": "${file}",
-        "args": [ "*${args:--update-gadget-config}" ],
+        "python": "./.venv/bin/python",
+        "args": [ ],
         "stopOnEntry": "false",
-        "justMyCode#json": "${justMyCode:true}",
+        "justMyCode#json": "false",
         "breakpoints": {
             "exception": {
-                "caught": "",
+                "caught": "N",
                 "uncaught": "Y"
             }
         }
