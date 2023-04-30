@@ -44,15 +44,15 @@ setopt HIST_SAVE_NO_DUPS
 alias py=python
 
 function vimfh {
-    vim $(fzfh)
+    vim -p -- $(fzfh)
 }
 
 function vimf {
-    vim $(fzf)
+    vim -p -- $(fzf -m)
 }
 
 function fzfh {
-    find . | fzf
+    find . | fzf -m
 }
 
 function venv_act {

@@ -30,7 +30,7 @@ Plug 'puremourning/vimspector'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
-Plug 'vimwiki/vimwiki'
+"Plug 'vimwiki/vimwiki'
 Plug 'ziglang/zig.vim'
 call plug#end()
 " You can revert the settings after the call like so:
@@ -187,6 +187,7 @@ nmap <Leader>D     <Plug>VimspectorDisassemble
 
 nmap <Leader>drn   <Plug>VimspectorContinue
 nmap <Leader>dst   <Plug>VimspectorStop
+nmap <Leader>dq    <Leader>dst:tabc<CR>gT
 nmap <Leader>drt   <Plug>VimspectorRunToCursor
 nmap <Leader>dsi   <Plug>VimspectorStepInto
 nmap <Leader>dso   <Plug>VimspectorStepOut
