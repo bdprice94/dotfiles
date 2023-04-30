@@ -15,8 +15,8 @@
       "adapter": "debugpy",
       "configuration": {
         "request": "launch",
-        "program": "${file}",
         "python": "./.venv/bin/python",
+        "program": "${file}",
         "args": [ ],
         "stopOnEntry": "false",
         "justMyCode#json": "false",
