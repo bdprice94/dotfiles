@@ -63,6 +63,13 @@ function venv_act {
     fi
 }
 
+function edit_dotfiles {
+    pushd ~/dotfiles > /dev/null
+    vimfh
+    rm .session.vim
+    popd > /dev/null
+}
+
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
