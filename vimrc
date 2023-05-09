@@ -32,6 +32,7 @@ Plug 'junegunn/fzf.vim'
 
 "Plug 'vimwiki/vimwiki'
 Plug 'ziglang/zig.vim'
+Plug 'madox2/vim-ai'
 call plug#end()
 " You can revert the settings after the call like so:
 "   filetype indent off   " Disable file-type-specific indentation
@@ -61,8 +62,9 @@ set hlsearch
 set incsearch
 nnoremap <C-l> :noh<return><C-l>
 
-" lets mouse interact with vim from terminal
-set mouse=a
+" lets mouse interact with vim from terminal in normal and visual
+" insertion excluded so we can still select text for copying
+set mouse=nv
 
 set number
 
@@ -197,6 +199,16 @@ nmap <Leader>dbn   <Plug>VimspectorToggleBreakpoint
 nmap <Leader>dbc   <Plug>VimspectorToggleConditionalBreakpoint
 
 " Suggested coc settings follow 
+let  g:coc_global_extensions = [
+        \'coc-clangd',
+        \'coc-cmake',
+        \'coc-jedi',
+        \'coc-json',
+        \'coc-snippets',
+        \'coc-vimlsp',
+        \'coc-zig',
+        \'coc-zls'
+        \]
 set updatetime=300
 set signcolumn=yes
 inoremap <silent><expr> <TAB>

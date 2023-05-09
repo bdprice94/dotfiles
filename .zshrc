@@ -26,9 +26,9 @@ zstyle :compinstall filename '/home/bdp/.zshrc'
 
 export PATH=$PATH:~/.local/bin/
 
-export EDITOR=/usr/bin/vim
-export ED=/usr/bin/vim
-export VISUAL=/usr/bin/vim
+export EDITOR="/usr/bin/vim -u NONE"
+export ED="/usr/bin/vim -u NONE"
+export VISUAL="/usr/bin/vim -u NONE"
 
 export VIMRC_F=~/.vim/vimrc
 export ZSHRC_F=~/.zshrc
