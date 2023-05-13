@@ -143,7 +143,7 @@ imap 灻 <ESC>A;<CR>
 inoremap <C-s> <Esc>:w<CR>a
 
 " For WSL, will copy selected lines to clipboard
-vnoremap <silent> <Leader>c "cy:call CopyToClipboard()<CR>
+vnoremap <silent> <C-c> "cy:call CopyToClipboard()<CR>
 
 " For WSL, sends contents of 'c' register to clip.exe
 function! CopyToClipboard()
