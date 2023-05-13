@@ -64,7 +64,7 @@ nnoremap <C-l> :noh<return><C-l>
 
 " lets mouse interact with vim from terminal in normal and visual
 " insertion excluded so we can still select text for copying
-set mouse=nv
+set mouse=a
 
 set number
 
@@ -142,6 +142,14 @@ imap 灻 <ESC>A;<CR>
 " Ctrl-S to save, only doing because there's no other binding currently
 inoremap <C-s> <Esc>:w<CR>a
 
+" For WSL, will copy selected lines to clipboard
+vnoremap <silent> <Leader>c "cy:call CopyToClipboard()<CR>
+
+" For WSL, sends contents of 'c' register to clip.exe
+function! CopyToClipboard()
+    execute 'echo system("clip.exe", getreg("c", 1, 1))'
+endfunction
+
 function! SaveSessionIfGit()
     if isdirectory(getcwd() . '/.git')
         execute 'mksession! ' getcwd() . '/.session.vim'
@@ -202,8 +210,9 @@ nmap <Leader>dbc   <Plug>VimspectorToggleConditionalBreakpoint
 let  g:coc_global_extensions = [
         \'coc-clangd',
         \'coc-cmake',
-        \'coc-jedi',
+        \'@yaegassy/coc-pylsp',
         \'coc-json',
+        \'coc-tsserver',
         \'coc-snippets',
         \'coc-vimlsp',
         \'coc-zig',

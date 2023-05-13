@@ -41,7 +41,7 @@ if [[ $OS == "Arch Linux" ]]; then
     yay -Syu --noconfirm --devel
     yay -Y --noconfirm --devel --save
     yay -Syu --noconfirm 
-    yay -S --noconfirm zsh-theme-powerlevel10k-git zsh-vi-mode
+    yay -S --noconfirm zsh-theme-powerlevel10k-git zsh-vi-mode nvm
 else
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 fi
