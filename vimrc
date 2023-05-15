@@ -147,7 +147,11 @@ vnoremap <silent> <C-c> "cy:call CopyToClipboard()<CR>
 
 " For WSL, sends contents of 'c' register to clip.exe
 function! CopyToClipboard()
-    execute 'echo system("clip.exe", getreg("c", 1, 1))'
+    if has('clipboard')
+        call setreg('+', getreg("c", 1, 1))
+    else
+        execute 'echo system("clip.exe", getreg("c", 1, 1))'
+    endif
 endfunction
 
 function! SaveSessionIfGit()
