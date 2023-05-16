@@ -29,3 +29,5 @@ ln .p10k.zsh $P10k_LOC
 ln .tmux.conf $TMUX_LOC
 ln vimrc $VIM_LOC
 ln coc-settings.json $COC_LOC
+
+popd
