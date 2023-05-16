@@ -12,11 +12,11 @@ fi
 pushd ~/dotfiles
 git pull origin main
 
-ZSH_LOC="~/.zshrc"
-P10k_LOC="~/.p10k.zsh"
-TMUX_LOC="~/.tmux.conf"
-VIM_LOC="~/.vim/vimrc"
-COC_LOC="~/.vim/coc-settings.json"
+ZSH_LOC=~/.zshrc
+P10k_LOC=~/.p10k.zsh
+TMUX_LOC=~/.tmux.conf
+VIM_LOC=~/.vim/vimrc
+COC_LOC=~/.vim/coc-settings.json
 
 rm $ZSH_LOC
 rm $P10k_LOC
