@@ -219,6 +219,7 @@ let  g:coc_global_extensions = [
         \'coc-tsserver',
         \'coc-snippets',
         \'coc-vimlsp',
+        \'coc-sh',
         \'coc-zig',
         \'coc-zls'
         \]
