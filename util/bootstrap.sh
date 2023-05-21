@@ -29,7 +29,7 @@ if [[ $OS == "Arch Linux" ]]; then
 else
     sudo apt-get update
     sudo apt-get -y upgrade
-    sudo apt-get -y install vim git gh zsh fzf ripgrep bat nodejs python build-essential tmux 
+    sudo apt-get -y install gh zsh fzf ripgrep bat nodejs build-essential tmux 
     # Install nvm
     curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | zsh
 fi
