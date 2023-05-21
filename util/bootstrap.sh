@@ -13,25 +13,7 @@ else
 fi
 if [[ $OS == "Arch Linux" ]]; then
     sudo pacman -Syu --noconfirm
-    sudo pacman -S --noconfirm vim git github-cli zsh zsh-completions fzf ripgrep bat nodejs python base-devel tmux
-else
-    sudo apt-get update
-    sudo apt-get -y install vim git gh nodejs zsh fzf bat python 
-fi
-mkdir ~/.vim
-mkdir ~/.vim/undo
-git clone https://github.com/bdprice94/dotfiles.git
-ln dotfiles/vimrc ~/.vim/vimrc
-ln dotfiles/.p10k.zsh ~/.p10k.zsh
-ln dotfiles/.tmux.conf ~/.tmux.conf
-ln dotfiles/.zshrc ~/.zshrc
-# ln dotfiles/.vimspector.json ~/.vimspector.json
-
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-if [[ $OS == "Arch Linux" ]]; then
+    sudo pacman -S --noconfirm vim git github-cli zsh zsh-completions fzf ripgrep bat python base-devel tmux
     cd ~
     git clone https://aur.archlinux.org/yay.git
     cd yay
@@ -42,9 +24,29 @@ if [[ $OS == "Arch Linux" ]]; then
     yay -Y --noconfirm --devel --save
     yay -Syu --noconfirm 
     yay -S --noconfirm zsh-theme-powerlevel10k-git zsh-vi-mode nvm
+    cd ~
+    rm -rf yay
 else
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+    sudo apt-get update
+    sudo apt-get -y upgrade
+    sudo apt-get -y install vim git gh zsh fzf ripgrep bat nodejs python build-essential tmux 
+    # Install nvm
+    curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | zsh
 fi
 
-cd ~
-rm -rf yay
+mkdir -p ~/.vim/undo
+git clone https://github.com/bdprice94/dotfiles.git
+ln dotfiles/vimrc ~/.vim/vimrc
+ln dotfiles/.p10k.zsh ~/.p10k.zsh
+ln dotfiles/.tmux.conf ~/.tmux.conf
+ln dotfiles/.zshrc ~/.zshrc
+# ln dotfiles/.vimspector.json ~/.vimspector.json
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+source ~/.zshrc 
+nvm install node
+if [[ $OS == "Ubuntu" ]]; then
+    echo "Still need to install some zsh plugins"
+fi
