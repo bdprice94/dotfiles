@@ -31,7 +31,7 @@ else
     sudo apt-get -y upgrade
     sudo apt-get -y install gh zsh fzf ripgrep bat nodejs build-essential tmux 
     # Install nvm
-    curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | zsh
+    curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 fi
 
 mkdir -p ~/.vim/undo
@@ -45,7 +45,7 @@ ln dotfiles/.zshrc ~/.zshrc
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-source ~/.zshrc 
+source ~/.bashrc 
 nvm install node
 if [[ $OS == "Ubuntu" ]]; then
     echo "Still need to install some zsh plugins"

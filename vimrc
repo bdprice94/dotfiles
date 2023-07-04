@@ -130,6 +130,7 @@ nnoremap <Leader>f  :NERDTreeFind<CR>
 " conflicts occur! 灛 = \u705b /shrug
 nnoremap 灛 :Rg<CR>
 nnoremap <C-f> :GFiles<CR>
+nnoremap <Leader>F :Files<CR>
 inoremap 灛 <Esc>:Rg<CR>
 inoremap <C-f> <Esc>:GFiles<CR>
 nnoremap <C-t> :tabe<CR>
@@ -153,29 +154,6 @@ function! CopyToClipboard()
         execute 'echo system("clip.exe", getreg("c", 1, 1))'
     endif
 endfunction
-
-function! SaveSessionIfGit()
-    if isdirectory(getcwd() . '/.git')
-        execute 'mksession! ' getcwd() . '/.session.vim'
-    endif
-endfunction
-
-function! RestoreSess()
-if filereadable(getcwd() . '/.session.vim')
-    execute 'so ' . getcwd() . '/.session.vim'
-    if bufexists(1)
-        for l in range(1, bufnr('$'))
-            if bufwinnr(l) == -1
-                exec 'sbuffer ' . l
-            endif
-        endfor
-    endif
-endif
-endfunction
-
-" Session file
-au VimLeavePre * call SaveSessionIfGit()
-au VimEnter * nested call RestoreSess()
 
 " EasyAlign
 nmap ga <Plug>(EasyAlign)

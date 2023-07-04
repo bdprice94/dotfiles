@@ -66,8 +66,13 @@ function venv_act {
 function edit_dotfiles {
     pushd ~/dotfiles > /dev/null
     vimfh
-    rm .session.vim
     popd > /dev/null
+}
+
+export WORKSPACE=~/projects/4353
+function letsgo {
+    cd $WORKSPACE
+    venv_act
 }
 
 autoload -Uz compinit
